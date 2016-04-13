@@ -15,7 +15,7 @@ if (length(args)==0) {
 print(paste("Getting data for year",year))
 
 # create a connection to the database
-# 
+# you will need to change path to location of your local DB
 myDB <- "~/Desktop/swc_unc_sql/portal_project.sqlite"
 conn <- dbConnect(drv = SQLite(), dbname= myDB)
 
@@ -25,7 +25,7 @@ dbListFields(conn,"surveys")
 
 # constructing a query
 query_string <- "SELECT count(*) FROM surveys"
-dbGetQuery(conn,query_string)
+result <- dbGetQuery(conn,query_string)
 head(result)
 
 # write a query that gets the non-null weights for 
